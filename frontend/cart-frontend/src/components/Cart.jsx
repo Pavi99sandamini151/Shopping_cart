@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"; 
 import { useNavigate } from "react-router-dom";
-import { addToCart, clearCart, decreaseCart, removeFromCart } from "../features/cartSlice";
+import { useEffect } from "react";
+import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../features/cartSlice";
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
@@ -9,6 +10,10 @@ const Cart = () => {
     const backHome = () => {
         navigate("/");
     };
+    useEffect(() => {
+        dispatch(getTotals());
+        // eslint-disable-next-line
+    }, [cart]);
     const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem));
     };
