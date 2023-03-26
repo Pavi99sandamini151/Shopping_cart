@@ -8,11 +8,13 @@ import { Provider } from "react-redux";
 import productReducer, { productFetch } from './features/productSlice';
 import { productsApi } from './features/productsApi';
 import cartReducer, { getTotals } from './features/cartSlice';
+import authReducer from './features/authSlice';
 
 const store = configureStore({
   reducer: {
     products: productReducer,
     cart: cartReducer,
+    auth: authReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => 
